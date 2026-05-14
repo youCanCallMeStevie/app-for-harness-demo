@@ -18,6 +18,8 @@
   document.querySelectorAll('.login-logo-name, .sidebar-logo-name').forEach(el => {
     el.textContent = name;
   });
+  const emailInput = document.getElementById('email');
+  if (emailInput) emailInput.value = 'demo@' + domain;
 
   // Sources tried in order; first successful load wins
   const sources = [
@@ -26,12 +28,20 @@
     'https://www.google.com/s2/favicons?domain=' + domain + '&sz=128',
   ];
 
+  function setFavicon(url) {
+    let link = document.querySelector('link[rel~="icon"]');
+    if (!link) { link = document.createElement('link'); link.rel = 'icon'; document.head.appendChild(link); }
+    link.href = url;
+  }
+
   function showInitials(container) {
     const initials = name.split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
     container.innerHTML =
       '<span style="font-size:0.7em;font-weight:700;color:#fff;letter-spacing:-0.5px">' +
       initials + '</span>';
   }
+
+  let faviconSet = false;
 
   function tryNext(idx, container) {
     if (idx >= sources.length) {
@@ -49,6 +59,7 @@
       container.style.background = 'transparent';
       container.innerHTML = '';
       container.appendChild(this);
+      if (!faviconSet) { setFavicon(sources[idx]); faviconSet = true; }
     };
     img.onerror = function () { tryNext(idx + 1, container); };
     img.src = sources[idx];

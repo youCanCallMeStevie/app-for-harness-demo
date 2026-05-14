@@ -82,6 +82,14 @@
       'https://www.google.com/s2/favicons?domain=' + domain + '&sz=128',
     ];
 
+    function setFavicon(url) {
+      let link = document.querySelector('link[rel~="icon"]');
+      if (!link) { link = document.createElement('link'); link.rel = 'icon'; document.head.appendChild(link); }
+      link.href = url;
+    }
+
+    let faviconSet = false;
+
     function showInitials(container) {
       const initials = name.split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
       container.style.background = '';
@@ -104,6 +112,7 @@
         container.style.background = 'transparent';
         container.innerHTML = '';
         container.appendChild(this);
+        if (!faviconSet) { setFavicon(sources[idx]); faviconSet = true; }
       };
       img.onerror = function () { tryNext(idx + 1, container); };
       img.src = sources[idx];
@@ -119,6 +128,8 @@
     if (taglineEl && TAGLINES[data.industry]) {
       taglineEl.textContent = TAGLINES[data.industry];
     }
+    const emailInput = document.getElementById('email');
+    if (emailInput) emailInput.value = 'demo@' + data.domain;
   }
 
   // Apply saved brand immediately on load
@@ -161,11 +172,11 @@
         </div>
         <div class="rb-field">
           <label class="rb-label" for="rb-name">Company name</label>
-          <input class="rb-input" id="rb-name" type="text" placeholder="e.g. Leapwork" value="${current.name}">
+          <input class="rb-input" id="rb-name" type="text" placeholder="e.g. Harness" value="${current.name}">
         </div>
         <div class="rb-field">
           <label class="rb-label" for="rb-domain">Website domain</label>
-          <input class="rb-input" id="rb-domain" type="text" placeholder="e.g. leapwork.com" value="${current.domain}">
+          <input class="rb-input" id="rb-domain" type="text" placeholder="e.g. harness.io" value="${current.domain}">
         </div>
         <div class="rb-field">
           <label class="rb-label" for="rb-industry">Industry</label>
