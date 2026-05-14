@@ -12,12 +12,12 @@
 
 :root {
   /* ── Company Identity ─────────────────────────────── */
-  --company-name:    "Leapwork";
-  --company-domain:  "leapwork.com";
-  --company-tagline: "No-Code Test Automation";
+  --company-name:    "Harness";
+  --company-domain:  "harness.io";
+  --company-tagline: "The Modern Software Delivery Platform";
 
   /* ── Colour Palette ───────────────────────────────── */
-  --color-primary:       #1CC47E;   /* Leapwork green    */
+  --color-primary:       #1CC47E;   /* Technology green  */
   --color-primary-dark:  #159E65;   /* Hover / pressed   */
   --color-primary-light: #E4F9F0;   /* Tints / highlights */
   --color-accent:        #6366F1;   /* Indigo accent     */

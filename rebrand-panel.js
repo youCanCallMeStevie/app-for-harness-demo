@@ -130,6 +130,7 @@
     }
     const emailInput = document.getElementById('email');
     if (emailInput) emailInput.value = 'demo@' + data.domain;
+    document.dispatchEvent(new CustomEvent('brandupdated', { detail: data }));
   }
 
   // Apply saved brand immediately on load
@@ -138,7 +139,7 @@
 
   // Build and open the rebrand panel
   function openPanel() {
-    const current = saved || {
+    const current = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null') || {
       name:     getComputedStyle(document.documentElement).getPropertyValue('--company-name').trim().replace(/^['"]|['"]$/g, ''),
       domain:   getComputedStyle(document.documentElement).getPropertyValue('--company-domain').trim().replace(/^['"]|['"]$/g, ''),
       industry: 'technology'

@@ -186,6 +186,150 @@
     .bar-fill:hover { opacity: 1; }
     .bar-day { font-size: 0.68rem; color: var(--color-text-faint); }
 
+    /* ── Modal: Finance ──────────────────────────────── */
+    .fin-balance-section {
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem; text-align: center; margin-bottom: 1.5rem;
+    }
+    .fin-balance-label { font-size: 0.72rem; font-weight: 600; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.4rem; }
+    .fin-balance-amount { font-size: 2.4rem; font-weight: 700; font-family: var(--font-display); color: var(--color-text); line-height: 1; transition: color 0.5s; }
+    .fin-tabs { display: flex; gap: 0; margin-bottom: 1.25rem; border: 1.5px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; }
+    .fin-tab {
+      flex: 1; padding: 10px; background: none; border: none;
+      color: var(--color-text-muted); font-size: 0.875rem; font-weight: 600;
+      cursor: pointer; font-family: var(--font-body); transition: all 0.15s;
+    }
+    .fin-tab.active { background: var(--color-primary); color: #fff; }
+    .fin-tab:not(.active):hover { background: var(--color-bg-elevated); color: var(--color-text); }
+    .fin-input-row { display: flex; gap: 0.75rem; margin-bottom: 0.5rem; }
+    .fin-input-wrap { flex: 1; position: relative; }
+    .fin-input-wrap span { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: var(--color-text-muted); font-size: 0.95rem; pointer-events: none; }
+    .fin-input-wrap input { width: 100%; padding: 10px 13px 10px 26px; background: var(--color-bg-elevated); border: 1.5px solid var(--color-border); border-radius: var(--radius-md); color: var(--color-text); font-size: 0.95rem; font-family: var(--font-body); outline: none; transition: border-color 0.15s; box-sizing: border-box; }
+    .fin-input-wrap input:focus { border-color: var(--color-primary); }
+    .fin-error { font-size: 0.78rem; color: var(--color-danger); min-height: 1.1rem; margin-bottom: 1.25rem; }
+    .fin-tx-section { border-top: 1px solid var(--color-border); padding-top: 1.25rem; margin-top: 0.25rem; }
+    .fin-tx-heading { font-size: 0.72rem; font-weight: 600; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.75rem; }
+    .fin-tx-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--color-border); }
+    .fin-tx-row:last-child { border-bottom: none; }
+    .fin-tx-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; flex-shrink: 0; }
+    .fin-tx-in  { color: var(--color-success); background: rgba(34,197,94,0.12); }
+    .fin-tx-out { color: var(--color-danger);  background: rgba(239,68,68,0.12); }
+    .fin-tx-detail { flex: 1; }
+    .fin-tx-label { font-size: 0.875rem; font-weight: 500; color: var(--color-text); }
+    .fin-tx-time  { font-size: 0.75rem; color: var(--color-text-faint); margin-top: 1px; }
+    .fin-tx-amount { font-size: 0.9rem; font-weight: 600; white-space: nowrap; }
+
+    /* ── Modal: Basket ───────────────────────────────── */
+    .basket-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--color-primary); color: #fff;
+      font-size: 0.65rem; font-weight: 700; border-radius: 999px;
+      min-width: 18px; height: 18px; padding: 0 5px;
+      margin-left: 6px; vertical-align: middle; line-height: 1;
+      transition: transform 0.15s;
+    }
+    .basket-badge.pop { transform: scale(1.3); }
+    .products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem; }
+    .product-tile {
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1rem; display: flex; flex-direction: column; gap: 6px;
+    }
+    .product-emoji { font-size: 1.8rem; line-height: 1; margin-bottom: 2px; }
+    .product-name { font-size: 0.875rem; font-weight: 600; color: var(--color-text); }
+    .product-price { font-size: 0.8rem; color: var(--color-text-muted); }
+    .product-controls { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+    .qty-btn {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--color-bg-surface); border: 1.5px solid var(--color-border-light);
+      color: var(--color-text); font-size: 1rem; line-height: 1;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all 0.15s; font-family: inherit;
+    }
+    .qty-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+    .qty-count { font-size: 0.875rem; font-weight: 600; color: var(--color-text); min-width: 16px; text-align: center; }
+    .basket-summary {
+      border-top: 1px solid var(--color-border);
+      padding-top: 1.25rem;
+    }
+    .basket-heading { font-size: 0.72rem; font-weight: 600; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.75rem; }
+    .basket-empty { text-align: center; color: var(--color-text-faint); font-size: 0.85rem; padding: 0.75rem 0; }
+    .basket-row { display: flex; align-items: center; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid var(--color-border); font-size: 0.875rem; }
+    .basket-row:last-of-type { border-bottom: none; }
+    .basket-row-name { color: var(--color-text); }
+    .basket-row-qty { color: var(--color-text-muted); font-size: 0.8rem; margin-left: 4px; }
+    .basket-row-price { color: var(--color-text); font-weight: 600; }
+    .basket-total-row { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1.5px solid var(--color-border-light); margin-top: 4px; }
+    .basket-total-label { font-size: 0.875rem; font-weight: 700; color: var(--color-text); }
+    .basket-total-price { font-size: 1.1rem; font-weight: 700; color: var(--color-primary); }
+
+    /* ── Modal: Incidents ────────────────────────────── */
+    .inc-live-indicator { display:flex; align-items:center; gap:6px; font-size:0.7rem; font-weight:700; color:var(--color-danger); text-transform:uppercase; letter-spacing:0.06em; }
+    .inc-live-dot { width:7px; height:7px; border-radius:50%; background:currentColor; animation:inc-pulse 1.5s ease infinite; }
+    @keyframes inc-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.35;transform:scale(0.75)} }
+    .inc-badge { display:inline-flex; align-items:center; justify-content:center; background:var(--color-danger); color:#fff; font-size:0.65rem; font-weight:700; border-radius:999px; min-width:18px; height:18px; padding:0 5px; margin-left:6px; vertical-align:middle; line-height:1; }
+    .sys-banner { display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:var(--radius-md); margin-bottom:1.25rem; font-size:0.875rem; font-weight:600; border:1.5px solid; transition:all 0.4s; }
+    .sys-banner-dot { width:8px; height:8px; border-radius:50%; background:currentColor; flex-shrink:0; }
+    .sys-ok   { background:rgba(34,197,94,0.08);  border-color:rgba(34,197,94,0.3);  color:var(--color-success); }
+    .sys-warn { background:rgba(251,191,36,0.08); border-color:rgba(251,191,36,0.3); color:#F59E0B; }
+    .sys-crit { background:rgba(239,68,68,0.08);  border-color:rgba(239,68,68,0.3);  color:var(--color-danger); }
+    .inc-row { display:flex; align-items:flex-start; gap:12px; padding:13px 0; border-bottom:1px solid var(--color-border); transition:opacity 0.4s; }
+    .inc-row:last-child { border-bottom:none; }
+    .inc-row.resolved { opacity:0.4; }
+    .sev-pill { font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; padding:2px 7px; border-radius:4px; white-space:nowrap; flex-shrink:0; margin-top:2px; }
+    .sev-critical { background:rgba(239,68,68,0.15);  color:#EF4444; }
+    .sev-high     { background:rgba(249,115,22,0.15);  color:#F97316; }
+    .sev-medium   { background:rgba(234,179,8,0.15);   color:#CA8A04; }
+    .sev-low      { background:rgba(148,163,184,0.15); color:#94A3B8; }
+    .inc-body { flex:1; min-width:0; }
+    .inc-service { font-size:0.875rem; font-weight:600; color:var(--color-text); }
+    .inc-desc { font-size:0.8rem; color:var(--color-text-muted); margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .inc-meta { display:flex; align-items:center; gap:8px; margin-top:5px; }
+    .status-pill { font-size:0.68rem; font-weight:600; padding:2px 8px; border-radius:999px; text-transform:capitalize; }
+    .s-investigating { background:rgba(239,68,68,0.15);  color:#EF4444; }
+    .s-identified    { background:rgba(249,115,22,0.15); color:#F97316; }
+    .s-monitoring    { background:rgba(234,179,8,0.12);  color:#CA8A04; }
+    .s-resolved      { background:rgba(34,197,94,0.12);  color:var(--color-success); }
+    .inc-elapsed { font-size:0.72rem; color:var(--color-text-faint); }
+
+    /* ── Modal: Patient Admission ────────────────────── */
+    .pa-form-row { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-bottom:0.875rem; }
+    .pa-field { display:flex; flex-direction:column; gap:5px; }
+    .pa-label { font-size:0.72rem; font-weight:600; color:var(--color-text-muted); text-transform:uppercase; letter-spacing:0.07em; }
+    .pa-input, .pa-select {
+      background:var(--color-bg-elevated); border:1.5px solid var(--color-border);
+      border-radius:var(--radius-md); color:var(--color-text);
+      font-size:0.875rem; padding:9px 12px; outline:none;
+      font-family:var(--font-body); transition:border-color 0.15s;
+      width:100%; box-sizing:border-box;
+    }
+    .pa-input:focus, .pa-select:focus { border-color:var(--color-primary); }
+    .pa-select { cursor:pointer; }
+    .pa-priority-row { display:grid; grid-template-columns:repeat(3,1fr); gap:0.5rem; }
+    .pa-priority-btn {
+      padding:9px 0; border:1.5px solid var(--color-border); border-radius:var(--radius-md);
+      background:none; color:var(--color-text-muted); font-size:0.8rem; font-weight:600;
+      cursor:pointer; font-family:var(--font-body); transition:all 0.15s; text-align:center;
+    }
+    .pa-priority-btn.sel-routine   { border-color:#10B981; background:rgba(16,185,129,0.12); color:#10B981; }
+    .pa-priority-btn.sel-urgent    { border-color:#F59E0B; background:rgba(245,158,11,0.12); color:#F59E0B; }
+    .pa-priority-btn.sel-emergency { border-color:#EF4444; background:rgba(239,68,68,0.12);  color:#EF4444; }
+    .pa-error { font-size:0.78rem; color:var(--color-danger); min-height:1.1rem; margin:0.75rem 0 0.5rem; }
+    .pa-admissions-section { border-top:1px solid var(--color-border); padding-top:1.25rem; margin-top:1rem; }
+    .pa-admissions-heading { font-size:0.72rem; font-weight:600; color:var(--color-text-muted); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:0.75rem; }
+    .pa-admission-row { display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--color-border); }
+    .pa-admission-row:last-child { border-bottom:none; }
+    .pa-admission-avatar { width:32px; height:32px; border-radius:50%; background:var(--color-bg-elevated); border:1px solid var(--color-border-light); display:flex; align-items:center; justify-content:center; font-size:0.8rem; flex-shrink:0; font-weight:700; color:var(--color-primary); }
+    .pa-admission-detail { flex:1; min-width:0; }
+    .pa-admission-name { font-size:0.875rem; font-weight:500; color:var(--color-text); }
+    .pa-admission-meta { font-size:0.75rem; color:var(--color-text-faint); margin-top:1px; }
+    .pa-admission-ref { font-size:0.78rem; font-weight:600; color:var(--color-text-muted); white-space:nowrap; font-family:var(--font-display); }
+    .pa-badge { display:inline-flex; align-items:center; justify-content:center; background:var(--color-primary); color:#fff; font-size:0.65rem; font-weight:700; border-radius:999px; min-width:18px; height:18px; padding:0 5px; margin-left:6px; vertical-align:middle; line-height:1; transition:transform 0.15s; }
+    .pa-badge.pop { transform:scale(1.3); }
+
     /* ── Modal: Connect ───────────────────────────────── */
     .int-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
     .int-tile {
@@ -228,13 +372,40 @@
   <div class="cards-section">
     <div class="cards-grid">
 
-      <div class="feature-card" onclick="openModal('quickstart')">
+      <div class="feature-card" id="card-quickstart" onclick="openModal('quickstart')">
         <div class="card-icon">
           <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
         </div>
         <div class="card-title">Quick Start</div>
         <div class="card-desc">Follow a guided setup to get your account fully configured and ready to go.</div>
         <div class="card-cta">Get started <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+
+      <div class="feature-card" id="card-finance" style="display:none" onclick="openModal('finance')">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7 12 2"/></svg>
+        </div>
+        <div class="card-title">Account</div>
+        <div class="card-desc">Deposit and withdraw funds from your account in real time.</div>
+        <div class="card-cta">Manage account <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+
+      <div class="feature-card" id="card-basket" style="display:none" onclick="openModal('basket')">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </div>
+        <div class="card-title">Your Basket <span class="basket-badge" id="basket-badge" style="display:none">0</span></div>
+        <div class="card-desc">Browse our latest products and add items to your basket. Your total updates in real time.</div>
+        <div class="card-cta">Shop now <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+
+      <div class="feature-card" id="card-patient" style="display:none" onclick="openModal('patient')">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="card-title">Patient Admission <span class="pa-badge" id="pa-card-badge">3</span></div>
+        <div class="card-desc">Register incoming patients and record their admission details in seconds.</div>
+        <div class="card-cta">New admission <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </div>
 
       <div class="feature-card" onclick="openModal('metrics')">
@@ -246,13 +417,22 @@
         <div class="card-cta">View metrics <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </div>
 
-      <div class="feature-card" onclick="openModal('connect')">
+      <div class="feature-card" id="card-connect" onclick="openModal('connect')">
         <div class="card-icon">
           <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
         </div>
         <div class="card-title">Connect</div>
         <div class="card-desc">Integrate with the tools your team already uses. One click to connect.</div>
         <div class="card-cta">Browse integrations <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+
+      <div class="feature-card" id="card-incidents" style="display:none" onclick="openModal('incidents')">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="card-title">Incidents <span class="inc-badge" id="inc-card-badge">3</span></div>
+        <div class="card-desc">Live feed of active incidents across your services. Watch statuses update in real time.</div>
+        <div class="card-cta">View feed <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
       </div>
 
     </div>
@@ -317,6 +497,157 @@
     </div>
   </div>
 
+  <!-- Modal: Finance -->
+  <div id="modal-finance" class="modal-overlay" onclick="overlayClick(event,'finance')">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Account</h2>
+        <button class="modal-close" onclick="closeModal('finance')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="fin-balance-section">
+          <div class="fin-balance-label">Current Balance</div>
+          <div class="fin-balance-amount" id="fin-balance">$10,000.00</div>
+        </div>
+        <div class="fin-tabs">
+          <button class="fin-tab active" data-tab="deposit"  onclick="switchFinTab('deposit')">Deposit</button>
+          <button class="fin-tab"        data-tab="withdraw" onclick="switchFinTab('withdraw')">Withdraw</button>
+        </div>
+        <div class="fin-input-row">
+          <div class="fin-input-wrap">
+            <span>$</span>
+            <input type="number" id="fin-amount" placeholder="0.00" min="0.01" step="0.01" onkeydown="if(event.key==='Enter')executeTransaction()">
+          </div>
+          <button class="btn btn-primary" id="fin-action-btn" onclick="executeTransaction()">Deposit</button>
+        </div>
+        <div class="fin-error" id="fin-error"></div>
+        <div class="fin-tx-section">
+          <div class="fin-tx-heading">Recent Transactions</div>
+          <div id="fin-tx-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Basket -->
+  <div id="modal-basket" class="modal-overlay" onclick="overlayClick(event,'basket')">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Your Basket <span class="basket-badge" id="basket-badge-modal" style="display:none">0</span></h2>
+        <button class="modal-close" onclick="closeModal('basket')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="products-grid" id="products-grid"></div>
+        <div class="basket-summary">
+          <div class="basket-heading">Basket</div>
+          <div id="basket-items-list"></div>
+        </div>
+        <button class="btn btn-primary" style="width:100%;margin-top:1.25rem" onclick="checkoutBasket()">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Patient Admission -->
+  <div id="modal-patient" class="modal-overlay" onclick="overlayClick(event,'patient')">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Patient Admission</h2>
+        <button class="modal-close" onclick="closeModal('patient')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="pa-form-row">
+          <div class="pa-field">
+            <label class="pa-label" for="pa-first">First Name</label>
+            <input class="pa-input" id="pa-first" type="text" placeholder="e.g. Sarah">
+          </div>
+          <div class="pa-field">
+            <label class="pa-label" for="pa-last">Last Name</label>
+            <input class="pa-input" id="pa-last" type="text" placeholder="e.g. Mitchell">
+          </div>
+        </div>
+        <div class="pa-form-row">
+          <div class="pa-field">
+            <label class="pa-label" for="pa-dob">Date of Birth</label>
+            <input class="pa-input" id="pa-dob" type="date">
+          </div>
+          <div class="pa-field">
+            <label class="pa-label" for="pa-gender">Gender</label>
+            <select class="pa-select" id="pa-gender">
+              <option value="">Select…</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Non-binary</option>
+              <option>Prefer not to say</option>
+            </select>
+          </div>
+        </div>
+        <div class="pa-form-row">
+          <div class="pa-field">
+            <label class="pa-label" for="pa-ward">Ward / Department</label>
+            <select class="pa-select" id="pa-ward">
+              <option value="">Select…</option>
+              <option>A&amp;E</option>
+              <option>Cardiology</option>
+              <option>General Medicine</option>
+              <option>Orthopaedics</option>
+              <option>Paediatrics</option>
+              <option>Oncology</option>
+            </select>
+          </div>
+          <div class="pa-field">
+            <label class="pa-label" for="pa-complaint">Presenting Complaint</label>
+            <select class="pa-select" id="pa-complaint">
+              <option value="">Select…</option>
+              <option>Chest pain</option>
+              <option>Shortness of breath</option>
+              <option>Abdominal pain</option>
+              <option>Head injury</option>
+              <option>Fracture / Trauma</option>
+              <option>Fever / Infection</option>
+              <option>Stroke symptoms</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="pa-field">
+          <label class="pa-label">Admission Priority</label>
+          <div class="pa-priority-row" style="margin-top:5px">
+            <button class="pa-priority-btn sel-routine"  id="pa-pri-routine"   onclick="selectPriority('routine')">Routine</button>
+            <button class="pa-priority-btn"              id="pa-pri-urgent"    onclick="selectPriority('urgent')">Urgent</button>
+            <button class="pa-priority-btn"              id="pa-pri-emergency" onclick="selectPriority('emergency')">Emergency</button>
+          </div>
+        </div>
+        <div class="pa-error" id="pa-error"></div>
+        <button class="btn btn-primary" id="pa-submit-btn" style="width:100%" onclick="submitAdmission()">Register Patient</button>
+        <div class="pa-admissions-section">
+          <div class="pa-admissions-heading">Today's Admissions</div>
+          <div id="pa-admissions-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Incidents -->
+  <div id="modal-incidents" class="modal-overlay" onclick="overlayClick(event,'incidents')">
+    <div class="modal">
+      <div class="modal-header" style="gap:0.75rem">
+        <h2 style="margin-right:auto">Incident Feed</h2>
+        <div class="inc-live-indicator">
+          <div class="inc-live-dot"></div>
+          <span>Live</span>
+        </div>
+        <button class="modal-close" onclick="closeModal('incidents')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="sys-status-banner" class="sys-banner sys-crit">
+          <div class="sys-banner-dot"></div>
+          <span id="sys-status-text">Investigating Incidents</span>
+        </div>
+        <div id="inc-feed"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Modal: Connect -->
   <div id="modal-connect" class="modal-overlay" onclick="overlayClick(event,'connect')">
     <div class="modal">
@@ -332,15 +663,16 @@
   </div>
 
   <script>
-    // Hero tagline — driven by saved industry, falls back to CSS var
+    const TAGLINES = {
+      technology: 'Ready to build something great today?',
+      finance:    'Your numbers are looking sharp.',
+      healthcare: 'Good to have you back.',
+      retail:     'Plenty to explore — let\'s get started.',
+      automotive: 'Everything\'s running smoothly.',
+    };
+
+    // ── Hero tagline ───────────────────────────────────
     (function () {
-      const TAGLINES = {
-        technology:  'Ready to build something great today?',
-        finance:     'Your numbers are looking sharp.',
-        healthcare:  'Good to have you back.',
-        retail:      'Plenty to explore — let\'s get started.',
-        automotive:  'Everything\'s running smoothly.',
-      };
       const el = document.getElementById('hero-tagline');
       if (!el) return;
       const saved = JSON.parse(localStorage.getItem('harness-demo-brand') || 'null');
@@ -353,7 +685,328 @@
       }
     })();
 
-    // Integrations state
+    // ── Industry-specific cards ────────────────────────
+    function updateIndustryCards(industry) {
+      const isFinance    = industry === 'finance';
+      const isRetail     = industry === 'retail';
+      const isTech       = industry === 'technology';
+      const isHealthcare = industry === 'healthcare';
+      document.getElementById('card-quickstart').style.display = (isFinance || isRetail || isHealthcare) ? 'none' : '';
+      document.getElementById('card-finance').style.display    = isFinance    ? '' : 'none';
+      document.getElementById('card-basket').style.display     = isRetail     ? '' : 'none';
+      document.getElementById('card-patient').style.display    = isHealthcare ? '' : 'none';
+      document.getElementById('card-connect').style.display    = isTech       ? 'none' : '';
+      document.getElementById('card-incidents').style.display  = isTech       ? '' : 'none';
+    }
+
+    const initSaved = JSON.parse(localStorage.getItem('harness-demo-brand') || 'null');
+    updateIndustryCards(initSaved ? initSaved.industry : 'technology');
+
+    document.addEventListener('brandupdated', e => {
+      updateIndustryCards(e.detail.industry);
+      const el = document.getElementById('hero-tagline');
+      if (el && TAGLINES[e.detail.industry]) el.textContent = TAGLINES[e.detail.industry];
+    });
+
+    // ── Finance modal ──────────────────────────────────
+    let finBalance = 10000;
+    let finTab = 'deposit';
+    const finTx = [
+      { type: 'deposit',  amount: 3000, label: 'Deposit',    time: '1 week ago' },
+      { type: 'withdraw', amount: 1200, label: 'Withdrawal', time: '3 days ago' },
+      { type: 'deposit',  amount:  500, label: 'Deposit',    time: '2 days ago' },
+    ];
+
+    function fmtMoney(n) {
+      return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function renderFinBalance() {
+      document.getElementById('fin-balance').textContent = fmtMoney(finBalance);
+    }
+
+    function renderFinTx() {
+      const el = document.getElementById('fin-tx-list');
+      if (!el) return;
+      if (!finTx.length) {
+        el.innerHTML = '<div style="text-align:center;color:var(--color-text-faint);font-size:0.85rem;padding:1rem 0">No transactions yet.</div>';
+        return;
+      }
+      el.innerHTML = [...finTx].reverse().slice(0, 5).map(tx => `
+        <div class="fin-tx-row">
+          <div class="fin-tx-icon ${tx.type === 'deposit' ? 'fin-tx-in' : 'fin-tx-out'}">${tx.type === 'deposit' ? '↑' : '↓'}</div>
+          <div class="fin-tx-detail">
+            <div class="fin-tx-label">${tx.label}</div>
+            <div class="fin-tx-time">${tx.time}</div>
+          </div>
+          <div class="fin-tx-amount ${tx.type === 'deposit' ? 'fin-tx-in' : 'fin-tx-out'}">
+            ${tx.type === 'deposit' ? '+' : '−'}${fmtMoney(tx.amount)}
+          </div>
+        </div>`).join('');
+    }
+
+    function switchFinTab(tab) {
+      finTab = tab;
+      document.querySelectorAll('.fin-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+      document.getElementById('fin-action-btn').textContent = tab === 'deposit' ? 'Deposit' : 'Withdraw';
+      document.getElementById('fin-amount').value = '';
+      document.getElementById('fin-error').textContent = '';
+    }
+
+    function executeTransaction() {
+      const input   = document.getElementById('fin-amount');
+      const errorEl = document.getElementById('fin-error');
+      const amount  = parseFloat(input.value);
+
+      if (!amount || amount <= 0) { errorEl.textContent = 'Please enter a valid amount.'; return; }
+      if (finTab === 'withdraw' && amount > finBalance) { errorEl.textContent = 'Insufficient funds.'; return; }
+
+      errorEl.textContent = '';
+      finBalance += finTab === 'deposit' ? amount : -amount;
+      finTx.push({ type: finTab === 'deposit' ? 'deposit' : 'withdraw', amount, label: finTab === 'deposit' ? 'Deposit' : 'Withdrawal', time: 'just now' });
+      input.value = '';
+
+      renderFinBalance();
+      renderFinTx();
+
+      const balEl = document.getElementById('fin-balance');
+      balEl.style.color = finTab === 'deposit' ? 'var(--color-success)' : 'var(--color-danger)';
+      setTimeout(() => { balEl.style.color = ''; }, 700);
+    }
+
+    // ── Patient Admission ──────────────────────────────
+    let paPriority = 'routine';
+    const paAdmissions = [
+      { name: 'James Okafor',  ref: 'ADM-00421', ward: 'Cardiology',      priority: 'urgent',    time: '08:14' },
+      { name: 'Priya Sharma',  ref: 'ADM-00422', ward: 'General Medicine', priority: 'routine',   time: '09:02' },
+      { name: 'Tom Whitfield', ref: 'ADM-00423', ward: 'A&E',             priority: 'emergency', time: '10:47' },
+    ];
+    let paNextRef = 424;
+
+    const PA_PRI_COLOR = { routine: '#10B981', urgent: '#F59E0B', emergency: '#EF4444' };
+
+    function selectPriority(p) {
+      paPriority = p;
+      ['routine', 'urgent', 'emergency'].forEach(v => {
+        const btn = document.getElementById('pa-pri-' + v);
+        btn.className = 'pa-priority-btn' + (v === p ? ' sel-' + v : '');
+      });
+    }
+
+    function renderPaAdmissions() {
+      const el = document.getElementById('pa-admissions-list');
+      if (!el) return;
+      if (!paAdmissions.length) {
+        el.innerHTML = '<div style="text-align:center;color:var(--color-text-faint);font-size:0.85rem;padding:0.75rem 0">No admissions recorded today.</div>';
+        return;
+      }
+      el.innerHTML = [...paAdmissions].reverse().slice(0, 5).map(a => {
+        const initials = a.name.split(' ').map(w => w[0]).join('').slice(0, 2);
+        return `
+        <div class="pa-admission-row">
+          <div class="pa-admission-avatar">${initials}</div>
+          <div class="pa-admission-detail">
+            <div class="pa-admission-name">${a.name}</div>
+            <div class="pa-admission-meta">${a.ward} &middot; <span style="color:${PA_PRI_COLOR[a.priority]};font-weight:600">${a.priority}</span> &middot; ${a.time}</div>
+          </div>
+          <div class="pa-admission-ref">${a.ref}</div>
+        </div>`;
+      }).join('');
+    }
+
+    function updatePaBadge() {
+      const badge = document.getElementById('pa-card-badge');
+      if (!badge) return;
+      badge.textContent = paAdmissions.length;
+      badge.classList.add('pop');
+      setTimeout(() => badge.classList.remove('pop'), 200);
+    }
+
+    function submitAdmission() {
+      const first   = document.getElementById('pa-first').value.trim();
+      const last    = document.getElementById('pa-last').value.trim();
+      const dob     = document.getElementById('pa-dob').value;
+      const ward    = document.getElementById('pa-ward').value;
+      const errorEl = document.getElementById('pa-error');
+
+      if (!first || !last) { errorEl.textContent = 'Please enter the patient\'s first and last name.'; return; }
+      if (!dob)            { errorEl.textContent = 'Please enter a date of birth.'; return; }
+      if (!ward)           { errorEl.textContent = 'Please select a ward or department.'; return; }
+
+      errorEl.textContent = '';
+      const now  = new Date();
+      const time = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+      const ref  = 'ADM-' + String(paNextRef++).padStart(5, '0');
+
+      paAdmissions.push({ name: first + ' ' + last, ref, ward, priority: paPriority, time });
+
+      ['pa-first', 'pa-last', 'pa-dob'].forEach(id => { document.getElementById(id).value = ''; });
+      document.getElementById('pa-gender').value    = '';
+      document.getElementById('pa-ward').value      = '';
+      document.getElementById('pa-complaint').value = '';
+      selectPriority('routine');
+
+      renderPaAdmissions();
+      updatePaBadge();
+
+      const btn = document.getElementById('pa-submit-btn');
+      const orig = btn.textContent;
+      btn.textContent = '✓ ' + ref + ' registered';
+      btn.style.background = 'var(--color-success)';
+      setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 2200);
+    }
+
+    // ── Basket ─────────────────────────────────────────
+    const PRODUCTS = [
+      { id: 1, name: 'Running Shoes',     emoji: '👟', price: 89.99 },
+      { id: 2, name: 'Denim Jacket',      emoji: '🧥', price: 64.99 },
+      { id: 3, name: 'Wireless Earbuds',  emoji: '🎧', price: 49.99 },
+      { id: 4, name: 'Canvas Backpack',   emoji: '🎒', price: 39.99 },
+      { id: 5, name: 'Sunglasses',        emoji: '🕶️', price: 29.99 },
+      { id: 6, name: 'Yoga Mat',          emoji: '🧘', price: 24.99 },
+    ];
+
+    const basketQty = {};
+
+    function basketTotal() {
+      return PRODUCTS.reduce((sum, p) => sum + (basketQty[p.id] || 0) * p.price, 0);
+    }
+
+    function basketCount() {
+      return Object.values(basketQty).reduce((s, q) => s + q, 0);
+    }
+
+    function updateBasketBadges() {
+      const count = basketCount();
+      ['basket-badge', 'basket-badge-modal'].forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.textContent = count;
+        el.style.display = count > 0 ? '' : 'none';
+        el.classList.add('pop');
+        setTimeout(() => el.classList.remove('pop'), 200);
+      });
+    }
+
+    function renderProducts() {
+      document.getElementById('products-grid').innerHTML = PRODUCTS.map(p => `
+        <div class="product-tile">
+          <div class="product-emoji">${p.emoji}</div>
+          <div class="product-name">${p.name}</div>
+          <div class="product-price">$${p.price.toFixed(2)}</div>
+          <div class="product-controls">
+            <button class="qty-btn" onclick="changeQty(${p.id},-1)">−</button>
+            <span class="qty-count" id="qty-${p.id}">${basketQty[p.id] || 0}</span>
+            <button class="qty-btn" onclick="changeQty(${p.id},1)">+</button>
+          </div>
+        </div>`).join('');
+    }
+
+    function renderBasketItems() {
+      const el = document.getElementById('basket-items-list');
+      const lines = PRODUCTS.filter(p => basketQty[p.id] > 0);
+      if (!lines.length) {
+        el.innerHTML = '<div class="basket-empty">No items yet — add something above.</div>';
+        return;
+      }
+      const rows = lines.map(p => `
+        <div class="basket-row">
+          <span class="basket-row-name">${p.emoji} ${p.name}<span class="basket-row-qty">×${basketQty[p.id]}</span></span>
+          <span class="basket-row-price">$${(p.price * basketQty[p.id]).toFixed(2)}</span>
+        </div>`).join('');
+      const total = `
+        <div class="basket-total-row">
+          <span class="basket-total-label">Total</span>
+          <span class="basket-total-price">$${basketTotal().toFixed(2)}</span>
+        </div>`;
+      el.innerHTML = rows + total;
+    }
+
+    function changeQty(id, delta) {
+      basketQty[id] = Math.max(0, (basketQty[id] || 0) + delta);
+      const qtyEl = document.getElementById('qty-' + id);
+      if (qtyEl) qtyEl.textContent = basketQty[id];
+      renderBasketItems();
+      updateBasketBadges();
+    }
+
+    function checkoutBasket() {
+      if (!basketCount()) return;
+      Object.keys(basketQty).forEach(k => delete basketQty[k]);
+      renderProducts();
+      renderBasketItems();
+      updateBasketBadges();
+    }
+
+    // ── Incidents ──────────────────────────────────────
+    const INC_STATUSES = ['investigating', 'identified', 'monitoring', 'resolved'];
+    const INCIDENTS = [
+      { id: 1, service: 'Payment Service',  desc: 'Timeout errors on checkout flow',        severity: 'critical', status: 'investigating', elapsed: '6m ago'     },
+      { id: 2, service: 'Auth Service',     desc: 'Intermittent SSO login failures',         severity: 'high',     status: 'identified',    elapsed: '31m ago'    },
+      { id: 3, service: 'API Gateway',      desc: 'Elevated error rate on /v2/* endpoints',  severity: 'critical', status: 'monitoring',    elapsed: '47m ago'    },
+      { id: 4, service: 'Database Cluster', desc: 'Read replica lag exceeding 30s',          severity: 'medium',   status: 'resolved',      elapsed: '1h 12m ago' },
+      { id: 5, service: 'CDN Edge Nodes',   desc: 'Cache miss rate spike in EU-West region', severity: 'low',      status: 'resolved',      elapsed: '3h ago'     },
+    ];
+
+    let incInterval = null;
+
+    function incActiveCount() {
+      return INCIDENTS.filter(i => i.status !== 'resolved').length;
+    }
+
+    function incSystemStatus() {
+      const active = INCIDENTS.filter(i => i.status !== 'resolved');
+      if (!active.length) return 'ok';
+      if (active.some(i => i.status === 'investigating')) return 'crit';
+      return 'warn';
+    }
+
+    function renderIncidentFeed() {
+      const count = incActiveCount();
+      const badge = document.getElementById('inc-card-badge');
+      if (badge) { badge.textContent = count; badge.style.display = count ? '' : 'none'; }
+
+      const banner = document.getElementById('sys-status-banner');
+      const statusText = document.getElementById('sys-status-text');
+      if (banner && statusText) {
+        const s = incSystemStatus();
+        banner.className = 'sys-banner ' + { ok: 'sys-ok', warn: 'sys-warn', crit: 'sys-crit' }[s];
+        statusText.textContent = { ok: 'All Systems Operational', warn: 'Degraded Performance', crit: 'Investigating Incidents' }[s];
+      }
+
+      const sevOrder = { critical: 0, high: 1, medium: 2, low: 3 };
+      const sorted = [...INCIDENTS].sort((a, b) => {
+        const aRes = a.status === 'resolved', bRes = b.status === 'resolved';
+        if (aRes !== bRes) return aRes ? 1 : -1;
+        return sevOrder[a.severity] - sevOrder[b.severity];
+      });
+
+      const feed = document.getElementById('inc-feed');
+      if (feed) feed.innerHTML = sorted.map(inc => `
+        <div class="inc-row ${inc.status === 'resolved' ? 'resolved' : ''}">
+          <span class="sev-pill sev-${inc.severity}">${inc.severity}</span>
+          <div class="inc-body">
+            <div class="inc-service">${inc.service}</div>
+            <div class="inc-desc">${inc.desc}</div>
+            <div class="inc-meta">
+              <span class="status-pill s-${inc.status}">${inc.status}</span>
+              <span class="inc-elapsed">${inc.elapsed}</span>
+            </div>
+          </div>
+        </div>`).join('');
+    }
+
+    function advanceIncident() {
+      const active = INCIDENTS.filter(i => i.status !== 'resolved');
+      if (!active.length) { clearInterval(incInterval); incInterval = null; return; }
+      const target = active[Math.floor(Math.random() * active.length)];
+      const idx = INC_STATUSES.indexOf(target.status);
+      target.status  = INC_STATUSES[Math.min(idx + 1, INC_STATUSES.length - 1)];
+      target.elapsed = 'just now';
+      renderIncidentFeed();
+    }
+
+    // ── Integrations ───────────────────────────────────
     const INTEGRATIONS = [
       { name: 'Slack',      emoji: '💬', connected: true  },
       { name: 'GitHub',     emoji: '🐙', connected: true  },
@@ -377,29 +1030,31 @@
       renderIntegrations();
     }
 
+    // ── Modal helpers ──────────────────────────────────
     function openModal(id) {
       document.getElementById('modal-' + id).classList.add('open');
-      if (id === 'connect') renderIntegrations();
+      if (id === 'connect')   renderIntegrations();
+      if (id === 'finance')   { renderFinBalance(); renderFinTx(); }
+      if (id === 'basket')    { renderProducts(); renderBasketItems(); }
+      if (id === 'patient')   { renderPaAdmissions(); }
+      if (id === 'incidents') { renderIncidentFeed(); incInterval = incInterval || setInterval(advanceIncident, 8000); }
       document.body.style.overflow = 'hidden';
     }
 
     function closeModal(id) {
       document.getElementById('modal-' + id).classList.remove('open');
       document.body.style.overflow = '';
+      if (id === 'incidents') { clearInterval(incInterval); incInterval = null; }
     }
 
     function overlayClick(e, id) {
       if (e.target === e.currentTarget) closeModal(id);
     }
 
-    function toggleCheck(el) {
-      el.classList.toggle('done');
-    }
+    function toggleCheck(el) { el.classList.toggle('done'); }
 
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') {
-        ['quickstart','metrics','connect'].forEach(closeModal);
-      }
+      if (e.key === 'Escape') ['quickstart','metrics','connect','finance','basket','patient','incidents'].forEach(closeModal);
     });
   </script>
 </body>
