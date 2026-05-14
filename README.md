@@ -30,7 +30,7 @@ Once the site is running, click the **⚙ Rebrand** button in the bottom-right c
 | Input | Example | Effect |
 |---|---|---|
 | **Company name** | `Barclays` | Updates the logo label and page titles across all pages |
-| **Website domain** | `barclays.com` | Fetches the company logo automatically (Clearbit → Google → initials fallback) |
+| **Website domain** | `barclays.com` | Fetches the company logo (Clearbit → Google → initials fallback), sets the browser favicon, and pre-fills the login email as `demo@domain` |
 | **Industry** | `Finance / Banking` | Swaps the full colour palette and sets a matching welcome tagline |
 
 **Industry presets:**
@@ -95,5 +95,5 @@ harness-demo/
 
 ### Tips
 - Use **⚙ Rebrand** right before a call to set the customer's branding live
+- The login email, browser favicon, and logo all update automatically from the domain — nothing to configure manually
 - The "Demo Mode" banner on the login page can be removed for cleaner screenshots
-- Pre-fill the email field with a customer-relevant address for extra polish
