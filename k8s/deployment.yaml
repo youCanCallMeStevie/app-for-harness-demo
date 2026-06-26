@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: app-for-harness-demo
-          image: app-for-harness-demo:latest
+          image: pkg.harness.io/eerjnxtns4grlg5vnnjzuw/branded-app-registry/app-for-harness-demo:latest
           ports:
             - containerPort: 80
           resources:

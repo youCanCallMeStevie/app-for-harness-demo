@@ -142,10 +142,10 @@ kubectl apply -f k8s/
 
 In your Harness CD stage, point the manifest source at the `k8s/` folder in this repo. Harness will pull the manifests and substitute the image with the artifact built by the CI stage — no manual image tag updates needed.
 
-The `deployment.yaml` image field (`app-for-harness-demo:latest`) is overridden by Harness CD at deploy time using the artifact reference from the pipeline. To use a specific registry, update the image field:
+The `deployment.yaml` image field is overridden by Harness CD at deploy time using the artifact reference from the pipeline. The image is hosted in Harness Artifact Registry:
 
 ```yaml
-image: <your-registry>/app-for-harness-demo:<tag>
+image: pkg.harness.io/eerjnxtns4grlg5vnnjzuw/branded-app-registry/app-for-harness-demo:<tag>
 ```
 
 ---
