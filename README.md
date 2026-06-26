@@ -1,6 +1,6 @@
 # app-for-harness-demo
 
-A branded demo portal for Harness SE presentations. Designed to run as a Docker container with branding baked in at build time via the Harness CI/CD pipeline — or rebranded live in the browser during a demo.
+An application to rebrand for bespoke Harness SE demos. Designed to run as a Docker container with branding baked in at build time via the Harness CI/CD pipeline — or rebranded live in the browser during a demo.
 
 ---
 
