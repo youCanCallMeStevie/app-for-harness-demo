@@ -4,8 +4,9 @@
       .getPropertyValue(prop).trim().replace(/^['"]|['"]$/g, '');
   }
 
-  const name   = cssVar('--company-name');
-  const domain = cssVar('--company-domain')
+  const cfg    = window.BRAND_CONFIG || {};
+  const name   = (cfg.name   && cfg.name   !== '__BRAND_NAME__'   ? cfg.name   : null) || cssVar('--company-name');
+  const domain = (cfg.domain && cfg.domain !== '__BRAND_DOMAIN__' ? cfg.domain : null) || cssVar('--company-domain')
     || name.toLowerCase().replace(/[^a-z0-9]/g, '') + '.com';
 
   if (!name) return;

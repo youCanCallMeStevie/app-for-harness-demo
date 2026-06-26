@@ -139,10 +139,15 @@
 
   // Build and open the rebrand panel
   function openPanel() {
+    const cfg = window.BRAND_CONFIG || {};
+    const cfgName     = cfg.name     && cfg.name     !== '__BRAND_NAME__'     ? cfg.name     : null;
+    const cfgDomain   = cfg.domain   && cfg.domain   !== '__BRAND_DOMAIN__'   ? cfg.domain   : null;
+    const cfgIndustry = cfg.industry && cfg.industry !== '__BRAND_INDUSTRY__' ? cfg.industry : null;
+
     const current = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null') || {
-      name:     getComputedStyle(document.documentElement).getPropertyValue('--company-name').trim().replace(/^['"]|['"]$/g, ''),
-      domain:   getComputedStyle(document.documentElement).getPropertyValue('--company-domain').trim().replace(/^['"]|['"]$/g, ''),
-      industry: 'technology'
+      name:     cfgName   || getComputedStyle(document.documentElement).getPropertyValue('--company-name').trim().replace(/^['"]|['"]$/g, ''),
+      domain:   cfgDomain || getComputedStyle(document.documentElement).getPropertyValue('--company-domain').trim().replace(/^['"]|['"]$/g, ''),
+      industry: cfgIndustry || 'technology'
     };
 
     const overlay = document.createElement('div');
