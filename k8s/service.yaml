@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-for-harness-demo
+  labels:
+    app: app-for-harness-demo
+spec:
+  type: LoadBalancer
+  selector:
+    app: app-for-harness-demo
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

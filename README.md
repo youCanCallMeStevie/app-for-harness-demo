@@ -33,7 +33,7 @@ With the app as the working artefact, open a blank canvas in Harness Pipeline St
 | **Build** | Harness CI | Build the Docker image using Harness Cloud-hosted runners, pass `BRAND_*` build args |
 | **Artifact** | Harness Artifact Registry (HAR) | Push the image to HAR, show versioned artifact storage |
 | **Security** | STO (Security Testing Orchestration) | Scan the image for vulnerabilities, gate the pipeline on severity thresholds |
-| **Deploy** | Harness CD | Deploy the image to a target environment, show rollback capability |
+| **Deploy** | Harness CD | Deploy the image to a target Kubernetes cluster using the manifests in `k8s/`, show rollback capability |
 
 Building the pipeline live — rather than showing a pre-built one — lets the customer see how quickly Harness connects each stage and makes the platform feel approachable rather than pre-scripted.
 
@@ -114,6 +114,9 @@ Branding is saved to `localStorage` and persists across pages. **Reset to defaul
 app-for-harness-demo/
 ├── Dockerfile          ← Accepts BRAND_NAME, BRAND_DOMAIN, BRAND_INDUSTRY build args
 ├── .dockerignore
+├── k8s/
+│   ├── deployment.yaml ← Kubernetes Deployment (1 replica, nginx container)
+│   └── service.yaml    ← Kubernetes Service (LoadBalancer, port 80)
 ├── brand-config.js     ← Placeholder values replaced at build time by Dockerfile
 ├── brand.js            ← Reads brand-config.js on load, fetches logo, updates name
 ├── rebrand-panel.js    ← ⚙ Rebrand button, panel UI, industry presets
@@ -122,6 +125,27 @@ app-for-harness-demo/
 ├── index.html          ← Login page
 ├── home.html           ← Post-login home (cards + interactive modals)
 └── README.md
+```
+
+---
+
+## Kubernetes Deployment
+
+The `k8s/` directory contains manifests for deploying to a Kubernetes cluster.
+
+**Apply manually:**
+```bash
+kubectl apply -f k8s/
+```
+
+**With Harness CD:**
+
+In your Harness CD stage, point the manifest source at the `k8s/` folder in this repo. Harness will pull the manifests and substitute the image with the artifact built by the CI stage — no manual image tag updates needed.
+
+The `deployment.yaml` image field (`app-for-harness-demo:latest`) is overridden by Harness CD at deploy time using the artifact reference from the pipeline. To use a specific registry, update the image field:
+
+```yaml
+image: <your-registry>/app-for-harness-demo:<tag>
 ```
 
 ---

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-for-harness-demo
+  labels:
+    app: app-for-harness-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-for-harness-demo
+  template:
+    metadata:
+      labels:
+        app: app-for-harness-demo
+    spec:
+      containers:
+        - name: app-for-harness-demo
+          image: app-for-harness-demo:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
