@@ -12,15 +12,6 @@ Confirm the customer's company name, domain, and industry, then update the pipel
 
 - Open the pipeline in Harness Pipeline Studio
 - Update the pipeline variables: `BRAND_NAME`, `BRAND_DOMAIN`, `BRAND_INDUSTRY`
-- Run the pipeline — this builds and pushes a pre-branded Docker image
-- Pull and run the image locally so the app is already branded when you open it
-
-```bash
-docker pull <your-registry>/app-for-harness-demo:latest
-docker run -p 8080:80 <your-registry>/app-for-harness-demo:latest
-```
-
-The app at `http://localhost:8080` will open with the customer's logo, colours, and industry context already applied — no live configuration needed.
 
 ### 2. During the demo — show the running application
 
