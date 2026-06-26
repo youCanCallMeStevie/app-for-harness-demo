@@ -4,6 +4,50 @@ A branded demo portal for Harness SE presentations. Designed to run as a Docker 
 
 ---
 
+## Suggested Demo Approach
+
+### 1. Before the demo — prepare the branding
+
+Confirm the customer's company name, domain, and industry, then update the pipeline variables in Harness before the call:
+
+- Open the pipeline in Harness Pipeline Studio
+- Update the pipeline variables: `BRAND_NAME`, `BRAND_DOMAIN`, `BRAND_INDUSTRY`
+- Run the pipeline — this builds and pushes a pre-branded Docker image
+- Pull and run the image locally so the app is already branded when you open it
+
+```bash
+docker pull <your-registry>/app-for-harness-demo:latest
+docker run -p 8080:80 <your-registry>/app-for-harness-demo:latest
+```
+
+The app at `http://localhost:8080` will open with the customer's logo, colours, and industry context already applied — no live configuration needed.
+
+### 2. During the demo — show the running application
+
+Open the app in the browser and walk through the branded experience:
+
+- Login page shows the customer's logo and colour theme
+- Home page surfaces industry-specific modules (incidents for tech, account for finance, patient admission for healthcare, etc.)
+- Use the **⚙ Rebrand** panel to make live adjustments if needed — useful for showing how quickly the experience can be tailored
+
+This gives the customer a tangible, familiar-feeling product to anchor the rest of the demo.
+
+### 3. During the demo — build the pipeline from scratch in Harness
+
+With the app as the working artefact, open a blank canvas in Harness Pipeline Studio and build the end-to-end pipeline live, introducing each module as you go:
+
+| Step | Harness Module | What to show |
+|---|---|---|
+| **Source** | Harness Code | Host the repo in Harness Code, trigger the pipeline on push |
+| **Build** | Harness CI | Build the Docker image using Harness Cloud-hosted runners, pass `BRAND_*` build args |
+| **Artifact** | Harness Artifact Registry (HAR) | Push the image to HAR, show versioned artifact storage |
+| **Security** | STO (Security Testing Orchestration) | Scan the image for vulnerabilities, gate the pipeline on severity thresholds |
+| **Deploy** | Harness CD | Deploy the image to a target environment, show rollback capability |
+
+Building the pipeline live — rather than showing a pre-built one — lets the customer see how quickly Harness connects each stage and makes the platform feel approachable rather than pre-scripted.
+
+---
+
 ## Running Locally
 
 **Option A — Docker (recommended):**
