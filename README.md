@@ -33,7 +33,7 @@ With the app as the working artefact, open a blank canvas in Harness Pipeline St
 | **Build** | Harness CI | Build the Docker image using Harness Cloud-hosted runners, pass `BRAND_*` build args |
 | **Artifact** | Harness Artifact Registry (HAR) | Push the image to HAR, show versioned artifact storage |
 | **Security** | STO (Security Testing Orchestration) | Scan the image for vulnerabilities, gate the pipeline on severity thresholds |
-| **Deploy** | Harness CD | Deploy the image to a target Kubernetes cluster using the manifests in `k8s/`, show rollback capability |
+| **Deploy** | Harness CD | Deploy the image to GKE using the manifests in `k8s/`, show rollback capability |
 
 Building the pipeline live — rather than showing a pre-built one — lets the customer see how quickly Harness connects each stage and makes the platform feel approachable rather than pre-scripted.
 
@@ -131,7 +131,7 @@ app-for-harness-demo/
 
 ## Kubernetes Deployment
 
-The `k8s/` directory contains manifests for deploying to a Kubernetes cluster.
+The `k8s/` directory contains manifests for deploying to a Kubernetes cluster. The manifests work with any Kubernetes cluster — GKE is recommended for demos, Docker Desktop is a free local alternative.
 
 **Apply manually:**
 ```bash
@@ -147,6 +147,66 @@ The `deployment.yaml` image field is overridden by Harness CD at deploy time usi
 ```yaml
 image: pkg.harness.io/eerjnxtns4grlg5vnnjzuw/branded-app-registry/app-for-harness-demo:<tag>
 ```
+
+---
+
+## Sandbox Infrastructure Setup
+
+You will need your own Harness account with admin rights to install a delegate and connect a cluster. A shared or customer account will not have sufficient permissions.
+
+### Preferred — GKE Autopilot (Google Cloud)
+
+Recommended for customer-facing demos. Feels enterprise, no node management, and your existing `k8s/` manifests deploy without any changes.
+
+**Prerequisites:** A Google Cloud account (free trial includes $300 credit — enough for a demo environment)
+
+1. **Create a GKE Autopilot cluster** in the GCP console:
+   - Go to **Kubernetes Engine → Clusters → Create**
+   - Select **Autopilot**
+   - Name it `harness-demo-cluster`, choose a region close to you
+   - Click **Create** — takes ~5 minutes
+
+2. **Authenticate kubectl locally:**
+```bash
+gcloud container clusters get-credentials harness-demo-cluster --region <your-region>
+kubectl get nodes
+```
+
+3. **Install the Harness Delegate** into the cluster:
+   - In Harness: **Account Settings → Delegates → New Delegate**
+   - Type: Kubernetes, Name: `demo-delegate`
+   - Download the generated `delegate.yaml` and run:
+```bash
+kubectl apply -f delegate.yaml
+kubectl get pods -n harness-delegate-ng
+```
+
+4. **Create a Kubernetes connector** in Harness pointing at the GKE cluster
+
+5. **Create the Infrastructure Definition** in your Harness environment using the GKE connector
+
+---
+
+### Alternative — Docker Desktop (local, free)
+
+Good for getting the pipeline working end-to-end before moving to a cloud cluster. Runs entirely on your laptop at no cost.
+
+1. **Enable Kubernetes** in Docker Desktop:
+   - Docker Desktop → **Settings → Kubernetes → Enable Kubernetes**
+   - Click **Apply & Restart** — takes 2-3 minutes
+
+2. **Install the Harness Delegate:**
+   - In Harness: **Account Settings → Delegates → New Delegate**
+   - Type: Kubernetes, Name: `demo-delegate`
+   - Download the generated `delegate.yaml` and run:
+```bash
+kubectl apply -f delegate.yaml
+kubectl get pods -n harness-delegate-ng
+```
+
+3. **Create a Kubernetes connector** in Harness pointing at `kubernetes.docker.internal`
+
+4. **Create the Infrastructure Definition** in your Harness environment using the Docker Desktop connector
 
 ---
 
