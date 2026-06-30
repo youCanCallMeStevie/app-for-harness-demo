@@ -14,6 +14,8 @@ spec:
       labels:
         app: app-for-harness-demo
     spec:
+      imagePullSecrets:
+        - name: harness-registry-secret
       containers:
         - name: app-for-harness-demo
           image: pkg.harness.io/eerjnxtns4grlg5vnnjzuw/branded-app-registry/app-for-harness-demo:latest
