@@ -5,7 +5,7 @@ metadata:
   labels:
     app: app-for-harness-demo
 spec:
-  replicas: {{.Values.replicaCount}}
+  replicas: 1
   selector:
     matchLabels:
       app: app-for-harness-demo
@@ -18,7 +18,7 @@ spec:
         - name: harness-registry-secret
       containers:
         - name: app-for-harness-demo
-          image: {{.Values.image.repository}}:{{.Values.image.tag}}
+          image: <+artifact.image>
           ports:
             - containerPort: 80
           resources:
