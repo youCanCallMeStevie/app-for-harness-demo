@@ -18,7 +18,7 @@ spec:
         - name: harness-registry-secret
       containers:
         - name: app-for-harness-demo
-          image: <+artifact.image>
+          image: {{.Values.image}}
           ports:
             - containerPort: 80
           resources:
